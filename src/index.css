@@ -85,6 +85,10 @@ a {
   color: var(--color-ink);
 }
 
+.main-nav {
+  display: none;
+}
+
 .main-nav ul {
   list-style: none;
   display: flex;
@@ -317,7 +321,7 @@ a {
 /* Contact */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: start;
 }
@@ -353,7 +357,7 @@ address p {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -389,9 +393,9 @@ address p {
   margin: 2rem 0 0;
 }
 
-/* Sticky mobile call button */
+/* Sticky mobile call button (mobile-only; hidden again at the desktop breakpoint below) */
 .mobile-call-button {
-  display: none;
+  display: block;
   position: fixed;
   bottom: 1rem;
   left: 50%;
@@ -406,20 +410,22 @@ address p {
   z-index: 60;
 }
 
-@media (max-width: 720px) {
+/* Mobile-first: everything above is the small-screen baseline. From here up,
+   progressively enhance the layout for larger viewports. */
+@media (min-width: 721px) {
   .main-nav {
-    display: none;
+    display: block;
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .footer-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr 1fr;
   }
 
   .mobile-call-button {
-    display: block;
+    display: none;
   }
 }
