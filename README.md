@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# Güneş Hafriyat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bilecik ve çevre illerde (Bursa, Eskişehir, Kütahya, Sakarya, Kocaeli) hafriyat, nakliyat ve kazı
+hizmetleri sunan işletme için Vite + React + TypeScript ile hazırlanmış, SEO'ya uygun tek sayfa site.
 
-Currently, two official plugins are available:
+## Geliştirme
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # geliştirme sunucusu
+npm run build    # prod build (tsc + vite build + prerender)
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+`npm run build` sonrasında `postbuild` adımı, `scripts/prerender.mjs` ile sayfayı bir kez
+Chromium'da render edip sonucu `dist/index.html` içine gömer; böylece arama motoru botları JS
+çalıştırmadan da tam içeriği görür. Ortamda Chromium yoksa bu adım hatasız atlanır.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Yayına almadan önce doldurulacak placeholder'lar
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Aşağıdaki bilgiler henüz gerçek değil, örnek (placeholder) veridir. Yayına almadan önce
+güncellenmeli:
+
+- **Domain**: `guneshafriyat.com` — `index.html`, `public/robots.txt`, `public/sitemap.xml`
+  içinde geçiyor. Gerçek alan adı belli olunca hepsinde değiştirilmeli.
+- **E-posta**: `info@guneshafriyat.com` — `src/data/content.ts` içindeki `business.email`.
+- **OG görseli**: `public/og-image.jpg`, `scripts/og-card.html` üzerinden otomatik üretildi
+  (`node scripts/generate-og-image.mjs`). Gerçek marka/foto materyali hazır olunca yenilenmeli.
+- **Saha fotoğrafları**: Şu an sitede gerçek fotoğraf yok, sadece SVG logo/ikon var.
+
+Telefon (`0535 321 99 78`) ve adres (İstiklal Mahallesi, Şerif Paşa Caddesi, Bilecik Merkez)
+gerçek bilgilerle güncellendi.
