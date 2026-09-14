@@ -1,10 +1,10 @@
 export const business = {
   name: 'Güneş Hafriyat',
-  phoneDisplay: '0500 000 00 00',
-  phoneHref: '+905000000000',
-  whatsappHref: '905000000000',
+  phoneDisplay: '0535 321 99 78',
+  phoneHref: '+905353219978',
+  whatsappHref: '905353219978',
   email: 'info@guneshafriyat.com',
-  address: 'Bilecik Merkez, Bilecik',
+  address: 'İstiklal Mahallesi, Şerif Paşa Caddesi, Bilecik Merkez / Bilecik',
   hours: 'Pazartesi - Cumartesi, 07:00 - 19:00',
 }
 
