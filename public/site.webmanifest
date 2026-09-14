@@ -1,0 +1,17 @@
+{
+  "name": "Güneş Hafriyat",
+  "short_name": "Güneş Hafriyat",
+  "description": "Bilecik ve çevre illerde hafriyat, nakliyat ve kazı hizmetleri.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c8600a",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
